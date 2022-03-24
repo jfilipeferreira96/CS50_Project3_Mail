@@ -1,0 +1,112 @@
+body {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f1f1f1;
+  font-family: "Roboto-Regular", sans-serif;
+}
+
+.card {
+  overflow: hidden;
+  border: 0 !important;
+  border-radius: 15px !important;
+  box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);
+}
+
+.card-body {
+  padding: 1rem;
+}
+
+.register {
+  color: #0d6efd;
+  text-decoration: none;
+}
+
+.title {
+  margin-bottom: 2rem;
+  font-size: 30px;
+  font-weight: 600;
+}
+
+.form-input {
+  position: relative;
+}
+
+.form-input input {
+  width: 100%;
+  height: 45px;
+  padding-left: 40px;
+  margin-bottom: 20px;
+  box-sizing: border-box;
+  box-shadow: none;
+  border-radius: 5px;
+  border: 1px solid #bfbfbf;
+  border-bottom-width: 2px;
+  outline: none;
+  background: transparent;
+  color: black !important;
+  font-weight: normal !important;
+}
+
+.form-input span {
+  position: absolute;
+  top: 10px;
+  padding-left: 15px;
+  color: #a5b5c5;
+}
+.form input::placeholder {
+  color: #bfbfbf;
+  padding-left: 0px;
+}
+
+.form-input input:focus {
+  border: 2px solid #454d55;
+}
+
+.form-input input:focus::placeholder {
+  color: #bfbfbf;
+}
+
+.custom-checkbox .custom-control-input:checked ~ .custom-control-label::before {
+  background-color: #454d55 !important;
+  border: 0px;
+}
+
+.form-box button[type="submit"] {
+  margin-top: 10px;
+  border: none;
+  cursor: pointer;
+  border-radius: 0px;
+  color: #fff;
+  font-size: 90%;
+  font-weight: bold;
+  letter-spacing: 0.1rem;
+  transition: 0.5s;
+  padding: 12px;
+  border-radius: 5px;
+}
+
+.footertext {
+  color: rgb(53, 52, 52);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.error-icon {
+  margin-left: -50px;
+  color: #d63031;
+}
+
+.error {
+  color: #d63031;
+  display: block;
+  text-align: left;
+  margin-top: 5px;
+  font-weight: bold;
+}
+.error-icon2 {
+  color: #d63031;
+  padding-right: 5px;
+}

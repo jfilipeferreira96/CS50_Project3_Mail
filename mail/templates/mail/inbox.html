@@ -1,0 +1,139 @@
+{% extends "mail/layout.html" %}
+{% load static %}
+
+{% block body %}
+    <div class="row" style="margin-top: 100px;">
+        <!-- Toasts-->
+        <div aria-live="polite" aria-atomic="true" class="position-relative">
+            <div class="toast-container position-absolute top-0 start-50 translate-middle">
+                <div class="toast align-items-center text-white bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true" id="toast-success">
+                    <div class="d-flex">
+                        <div class="toast-body toast-success-content">
+                            
+                        </div>
+                        <button type="button" class="btn-close btn-close-white m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Toasts-->
+        <div aria-live="polite" aria-atomic="true" class="position-relative">
+            <div class="toast-container position-absolute top-0 start-50 translate-middle">
+                <div class="toast align-items-center text-white bg-danger border-0" role="alert" aria-live="assertive" aria-atomic="true" id="toast-error">
+                    <div class="d-flex">
+                        <div class="toast-body toast-error-content">
+                            
+                        </div>
+                        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+    <div class="row" >
+        <!-- BEGIN INBOX -->
+            <div class="grid email">
+                <div class="grid-body">
+                    <div class="row">
+                        <!-- BEGIN INBOX MENU -->
+                        <div class="col-md-12">
+                            <div class="d-flex bd-highlight">
+                                <div class="bd-highlight" id="emails-view">
+                                    <!--<h2><i class="fa fa-inbox"></i> Inbox</h2>-->
+                                </div>
+                                
+                                <div class="ms-auto bd-highlight">Welcome, <strong>{{ request.user.email }}</strong> 
+                                
+                                    <a class="btn btn-danger btn-sm ms-2" href="{% url 'logout' %}"><i class="fa fa-sign-out" aria-hidden="true"></i> Log Out</a>
+                                </div>
+
+                            </div>
+                            <hr style="margin-top: 0px;margin-bottom: 8px;">
+                        </div>
+                        <div class="col-md-3">
+                            
+                                <!--<h2 class="grid-title"><i class="fa fa-inbox"></i> Inbox</h2>--> 
+                                <a class="col-12 btn btn-danger text-uppercase" id="compose"><i class="fa fa-pencil"></i>  COMPOSE</a>
+                                
+                                <hr class="mt-4 mb-4">
+        
+                                <div>
+                                    <ul class="nav nav-pills nav-stacked flex-column">
+                                        <li class="header">Folders</li>
+                                        <li class="active" id="inbox"><a  ><i class="fa fa-inbox"></i> Inbox</a></li>
+                                        <li id="sent"><a><i class="fa fa-mail-forward" ></i> Sent</a></li>
+                                        <li id="archived"><a><i class="fa fa-folder" ></i> Archived</a></li>
+                                    </ul>
+                                </div>
+                            
+                        </div>
+                        <!-- END INBOX MENU -->
+                        
+
+                        <div class="col-md-9">
+                            
+                            
+                            <div class="padding"></div>
+
+                            <div id="compose-view">
+                                <form class="px-3" id="compose-form">
+                                    <div class="form-group mt-2 mb-2">
+                                        From: <input disabled class="form-control" autocomplete="off" value="{{ request.user.email }}">
+                                    </div>
+                                    <div class="form-group mt-2 mb-2">
+                                        To: <input id="compose-recipients" autocomplete="off"class="form-control">
+                                    </div>
+                                    <div class="form-group mt-2 mb-2">
+                                        <input class="form-control" id="compose-subject" autocomplete="off" placeholder="Subject">
+                                    </div>
+                                    <textarea class="form-control" id="compose-body" autocomplete="off" rows="10" placeholder="Email body"></textarea>
+                                    <div class="text-end mt-2 mb-2">
+                                        <button type="submit" class="btn btn-danger">Send Email</button>
+                                    </div>
+                                    {% comment %} <input type="submit" class="btn btn-danger"> {% endcomment %}
+                                </form>
+                            </div>
+
+                            <div class="table-responsive" id="inbox-view">
+                                <table class="table">
+                                    <tbody id="table_body" data-mailbox="">
+                                    
+                                    </tbody>
+                                </table>
+                            </div>
+
+
+                            <div id="read-view">
+                                <div class="row">
+                                    <div style="display:inherit">
+                                        <h4 class="subject-email"></h4>
+                                    </div>           
+                                    <div class="form-group mb-2">
+                                        From: <input disabled="" id="from_email" class="form-control" autocomplete="off" value="">
+                                    </div>
+                                    <div class="form-group mt-2 mb-2">
+                                        To: <input disabled="" id="to_email" class="form-control" autocomplete="off" value="">
+                                    </div>
+                                    <div class="email-content " >
+                                        <textarea name="email_body" disabled="" class="form-control mt-2 mb-2" id="email_body" cols="10" rows="10"></textarea>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+                      
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- END INBOX -->
+    </div>
+   
+{% endblock %}
+
+{% block script %}
+    <script src="{% static 'mail/inbox.js' %}"></script>
+{% endblock %}
